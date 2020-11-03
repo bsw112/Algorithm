@@ -21,8 +21,6 @@ public class PlaneTicket2 {
 
     public static void main(String[] args) {
 
-       //String[][] input = new String[][]{{"ICN", "COO"}, {"ICN", "BOO"}, {"COO", "ICN"}, {"BOO", "DOO"}};
-        //String[][] input = new String[][]{{"ICN", "JFK"}, {"HND", "IAD"}, {"JFK", "HND"}};
         String[][] input = new String[][]{{"ICN", "SFO"}, {"ICN", "ATL"}, {"SFO", "ATL"}, {"ATL", "ICN"},
                 {"ATL", "SFO"}};
 
