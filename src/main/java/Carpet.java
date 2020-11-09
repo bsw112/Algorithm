@@ -1,5 +1,7 @@
 public class Carpet {
 
+    //못품
+    //https://programmers.co.kr/learn/courses/30/parts/12230
     public static void main(String[] args) {
         Carpet module = new Carpet();
         int[] result = module.solution(24, 24);

@@ -28,6 +28,7 @@ public class WordTransformation {
 
     }
 
+    //모든 경우의 수를 탐색한다. n^2 다만 dfs니까 n^2 보단 덜할것이다.
     int dfs(int cnt, String begin, String target, String[] words, boolean[] check)
     {
         //변환에 성공한 경우
@@ -44,6 +45,7 @@ public class WordTransformation {
             {
                 check[i] = true;
                 int result = dfs(cnt + 1, words[i], target, words, check);
+                //타겟이 좀더 가까워지는 결과를 저장
                 if(result < minCount)
                     minCount = result;
                 check[i] = false;

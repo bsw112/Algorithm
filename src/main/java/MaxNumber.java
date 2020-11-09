@@ -6,7 +6,12 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
+//https://programmers.co.kr/learn/courses/30/lessons/42840
+
 public class MaxNumber {
+    
+    //https://programmers.co.kr/learn/courses/30/lessons/42746
+    //못품
 
     public static void main(String[] args) {
 

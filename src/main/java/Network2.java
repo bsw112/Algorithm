@@ -21,9 +21,12 @@ public class Network2 {
 
         for(int j = 0; j< computers.length; ++j)
         {
+            //자기자신이 아니고, 연결되어있는 컴퓨터이고, 방문하지 않았다면
             if(i != j && computers[i][j] == 1 && !visited[j])
             {
+                //방문했다고 표시
                 visited[i] = true;
+                //분신에게 일시키기
                 dfs(j, computers, visited);
 
             }

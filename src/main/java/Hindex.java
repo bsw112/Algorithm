@@ -5,6 +5,7 @@ import java.util.Collections;
 public class Hindex {
 
     //https://programmers.co.kr/learn/courses/30/lessons/42747
+    // 지문을 이해하기 어려운문제.
     // 답이 반드시 citations안에 있다고 할 수 없다.
     /*
     input                       1 7 0 1 6 4
@@ -29,9 +30,13 @@ public class Hindex {
         int oldHindex = 0;
          for (int i = 0; i<citationsCopy.length; ++i)
          {
+             //둘 중 작은게 hindex
              int hIndex = Math.min(i +1 , citationsCopy[i]);
+
+             //가장 큰 hindex면 끝(오름차순정렬이 가능)
              if(oldHindex >= hIndex)
                  break;
+
              oldHindex = hIndex;
          }
 

@@ -5,6 +5,8 @@ public class PrimeNumber {
 
 
     //https://programmers.co.kr/learn/courses/30/lessons/42839
+    //한자리 숫자가 적힌 종이 조각이 흩어져있습니다. 흩어진 종이 조각을 붙여 소수를 몇 개 만들 수 있는지 알아내려 합니다.
+    //모든 경우의 수를 가진 table을 만들어서 그 table을 순회하면서 소수인거를 찾아내면된다.
 
     void MakeTable(LinkedList<Character> dataset, String currNum, ArrayList<String> rainbowTable) {
         if (dataset.isEmpty()) {
@@ -12,12 +14,19 @@ public class PrimeNumber {
                 rainbowTable.add(currNum);
         }
 
+        //모든 경우의 수를 찾는다. 예를들어 '123' 이면 '1' 이 첫번째 숫자일때 가능한 모든 경우의수를 구하고,
+        //'2'가 첫번째 숫자일때 가능한 모든 경우의 수를 구하고 ... 3도 마찬가지.
         for (int i = 0; i < dataset.size(); ++i) {
             String number = currNum + dataset.get(i);
             LinkedList<Character> newDataset = new LinkedList<>(dataset);
             newDataset.remove(i);
             MakeTable(newDataset, number, rainbowTable);
         }
+    }
+
+    public static void main(String[] args) {
+        PrimeNumber module = new PrimeNumber();
+         module.solution("1789");
     }
 
 
@@ -29,8 +38,10 @@ public class PrimeNumber {
         for (int i = 0; i < numbers.length(); ++i)
             dataset.add(numbers.charAt(i));
 
+        //모든 수를 썼을때 나올 수 있는 경우의 수를 모두 구한다.
         MakeTable(dataset, "", rainbowTable);
 
+        //rainbowTable을 가지고 자리수를 점차 늘려가며 소수인지 확인한다.
         for (int i = 1; i <= numbers.length(); ++i) {
             for (String num : rainbowTable) {
                 int result = Integer.parseInt(num.substring(0, i));

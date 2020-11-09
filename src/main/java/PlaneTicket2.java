@@ -13,8 +13,7 @@ public class PlaneTicket2 {
     깊이탐색을 하면서(결국엔 모든 경우의 수를 탐색) 조건 1과 2를 모두 만족하는 루트를 찾는다.
     너비탐색은 마치 개미굴에 물을 붓듯이 처음부터 모든 경로를 탐색하려하므로 시간이 더 오래걸릴 듯.
 
-    깊이탐색을 하면서 막다른 길이면 쓴 티켓을 다시 안쓴 상태로 되돌려야한다.
-
+    깊이탐색을 하면서 막다른 길이면 쓴 티켓을 다시 안쓴 상태로 되돌려야한다
      */
 
 
@@ -45,20 +44,28 @@ public class PlaneTicket2 {
     //때문에 어떤 경로(단순히 탐색경로 말고)를 출력할 필요가 있을때는 재귀를 쓰는게 좋다.
     public boolean dfs(String start, String[][] tickets, ArrayList<Boolean> checked, ArrayList<String> answer, int endSize, int count)
     {
+        //일단 경로에 넣자.
         answer.add(start);
 
+        //만약 모든 티켓을 사용했다면
         if(answer.size() >= endSize +1)
             return true;
 
+
         for(int i = 0; i<tickets.length; ++i) {
 
+            //start와 티켓의 출발지가 같고, 사용하지 않은 티켓이면
             if(tickets[i][0].equals(start) && !checked.get(i))
             {
+                //사용했다고 표시
                 checked.set(i, true);
+                //자식노드(그래프니까 인접노드)로 하여금 현재 사용한 티켓의 목적지를 출발지로 하는 티켓을 찾아서 똑같은 로직을 반복하도록 한다.
                 boolean result = dfs(tickets[i][1], tickets, checked, answer, endSize,count +1);
 
+                //만약 if(answer.size() >= endSize +1)에 결려서 true를 리턴했다면 끝
                 if(result)
                     return true;
+                //아니면 현재 사용한 티켓을 사용하지 않은 상태로 만든다. (무른다)
                 else
                     checked.set(i, false);
 
@@ -66,7 +73,7 @@ public class PlaneTicket2 {
 
         }
 
-
+        //만약 모든티켓을 사용하지 않았다면
         answer.remove(answer.size() - 1);
         return false;
 
